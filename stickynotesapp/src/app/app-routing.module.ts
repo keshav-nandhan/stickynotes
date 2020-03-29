@@ -9,11 +9,11 @@ import { GuardService } from './guard.service';
 
 
 const routes: Routes = [
-  { path: '', redirectTo: '/login', pathMatch: 'full' },
+  { path: '', redirectTo: '/login', pathMatch: 'full'},
   { path:'login', component:LoginauthComponent}, 
-  { path:'AddTask', component:AddtaskComponent },
-  { path:'ViewTasks', component:TaskscardsComponent},
-  { path:'ContactUS', component:ContactusComponent},
+  { path:'addtask', component:AddtaskComponent,canActivate:[GuardService] },
+  { path:'tasks', component:TaskscardsComponent,canActivate:[GuardService]},
+  { path:'ContactUS', component:ContactusComponent,canActivate:[GuardService]},
   {path:'**',component:PagenotfoundComponent}
 ];
 

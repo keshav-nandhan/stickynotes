@@ -7,14 +7,17 @@ import {Router} from '@angular/router';
   styleUrls: ['./loginauth.component.scss']
 })
 export class LoginauthComponent implements OnInit {
-  constructor(public authService: AuthService,private router: Router) { }
+
+  constructor(public authService: AuthService,private router: Router) { 
+
+  }
+  
   ngOnInit(): void {
   }
 
-  signOut(){
-    this.authService.Logout();
-    this.router.navigate(['/login']);
+  signIn(){
+    this.authService.GoogleAuth();
+    this.router.navigate(['/tasks']);
   }
-  
 
 }

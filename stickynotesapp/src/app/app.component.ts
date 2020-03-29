@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -8,30 +7,9 @@ import { Router } from '@angular/router';
 export class AppComponent implements OnInit{
   
   title = 'stickynotesapp';
-  navLinks: any[];
-  activeLinkIndex = -1; 
-  constructor(private router: Router) {
-    this.navLinks = [
-        {
-            label: 'Login',
-            link: './login',
-            index: 0
-        }, {
-            label: 'Add Task',
-            link: './AddTask',
-            index: 1
-        }, {
-            label: 'view',
-            link: './ViewTasks',
-            index: 2
-        }, 
-    ];
-
+  constructor() {
 }
 
 ngOnInit():void{
-  this.router.events.subscribe((res) => {
-    this.activeLinkIndex = this.navLinks.indexOf(this.navLinks.find(tab => tab.link === '.' + this.router.url));
-});
 }
 }

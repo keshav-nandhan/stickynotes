@@ -1,22 +1,28 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore, AngularFirestoreDocument, AngularFirestoreCollection } from '@angular/fire/firestore';
 import { tasks } from './tasks.model';
-import {Observable} from 'rxjs';
-import {map} from 'rxjs/operators';
-
+import {Observable, of} from 'rxjs';
+import {map, switchMap} from 'rxjs/operators';
+import { users } from './user.model';
+import { AngularFireAuth } from '@angular/fire/auth';
+import { firestore } from 'firebase';
 @Injectable({
   providedIn: 'root'
 })
 export class TaskserviceService {
 
  taskstodo:AngularFirestoreCollection<tasks>;
+ userlist:AngularFirestoreCollection<users>;
  tasks:Observable<tasks[]>;
  taskDoc: AngularFirestoreDocument<tasks>;
  taskarray:tasks[];
+ userLoggedIn:any;
  
-  constructor(private readonly af:AngularFirestore  ) {
-    this.taskstodo= this.af.collection<tasks>('taskstodo');
+  constructor(private readonly af:AngularFirestore,private afAuth: AngularFireAuth ) {
+    
+    this.taskstodo= this.af.doc(`Users/${afAuth.auth.currentUser.uid}`).collection<tasks>('taskstodo');
     this.tasks=this.taskstodo.valueChanges();
+
     this.tasks=this.taskstodo.snapshotChanges().pipe(map(actions => {
       return actions.map(a => {
         const data = a.payload.doc.data() as tasks;

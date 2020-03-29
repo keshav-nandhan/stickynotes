@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { tasks } from '../tasks.model';
 import { Observable } from 'rxjs';
-import { AngularFirestoreCollection, AngularFirestoreDocument, AngularFirestore, DocumentChangeAction } from '@angular/fire/firestore';
-import {map} from 'rxjs/operators';
 import { TaskserviceService } from '../taskservice.service';
+import { AuthService } from '../auth.service';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-taskscards',
   templateUrl: './taskscards.component.html',
@@ -11,12 +11,11 @@ import { TaskserviceService } from '../taskservice.service';
 })
 export class TaskscardsComponent implements OnInit {
 
-taskitems:Observable<any>;
-taskDoc: AngularFirestoreDocument<tasks>;
+taskitems:Observable<tasks[]>;
 tasksnapshot:any;
 
 
-constructor(private serviceobj:TaskserviceService ) {
+constructor(private serviceobj:TaskserviceService,private authservice:AuthService,private router:Router ) {
     
   //console.log(this.tasksnapshot);
   //this.taskstodo=af.collection<tasks>('tasks');
@@ -38,7 +37,11 @@ constructor(private serviceobj:TaskserviceService ) {
 ngOnInit(): void {
   this.getTasks();
   }
-
+signOut()
+{
+  this.authservice.Logout();
+  this.router.navigate(['/login']);
+}
   deleteItem(task) {
     //Get the task id
     console.log(task);
