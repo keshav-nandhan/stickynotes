@@ -22,14 +22,6 @@ constructor(private serviceobj:TaskserviceService,private authservice:AuthServic
   //this.tasks = this.taskstodo.valueChanges();
  }
 
- warn(text:string)
- {
-   if(text=="low")
-   {
-     return "bg-success"
-   }
- }
-
  getTasks(){
    this.taskitems= this.serviceobj.getTasks();
  }

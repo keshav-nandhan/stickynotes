@@ -16,8 +16,9 @@ export class LoginauthComponent implements OnInit {
   }
 
   signIn(){
-    this.authService.GoogleAuth();
-    this.router.navigate(['/tasks']);
+    this.authService.GoogleAuth().then(()=>{
+      this.router.navigate(['/tasks']);
+    });
   }
 
 }

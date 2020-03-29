@@ -1,10 +1,10 @@
 <div>
-  <button class="btn btn-danger" style="margin-right:0 ;" (click)="signOut()">Logout</button>
+  <button class="btn btn-danger logoutLblPos" (click)="signOut()">Logout</button>
 
 <button routerLink="/addtask" routerLinkActive="active" type="button" class="btn btn-default">
 <span class="glyphicon glyphicon-plus-sign" aria-hidden="true">Add Task</span>
 </button>
-<div class="row mt-5 card-container">
+<div class="row mt-5 card-container" *ngIf="(taskitems | async)?.length;else warning">
 <div class="col-md-4 mb-3" *ngFor="let obj of taskitems | async">
 <div class="card text-white mb-3" [ngClass]="{
   'bg-success':obj.importance === 'low',
@@ -19,4 +19,9 @@
 </div>
 </div>
 </div>
+<ng-template #warning>
+  <div class="alert alert-info" role="alert">
+    <span><strong>No tasks were added for your account</strong></span>
+  </div>
+</ng-template>
 </div>

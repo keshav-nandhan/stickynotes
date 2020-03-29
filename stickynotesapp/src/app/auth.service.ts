@@ -42,7 +42,7 @@ export class AuthService {
  //this.isLoggedIn=false;
  //this.afAuth.authState.subscribe(data=>{console.log(data)});
   await this.afAuth.auth.signOut().then(() => {
-  return this.router.navigate(['/login']);
+  this.router.navigate(['/login']);
   }).catch(function(error) {
       console.log(error)
     });
