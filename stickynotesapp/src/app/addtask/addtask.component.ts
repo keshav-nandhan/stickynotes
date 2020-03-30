@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./addtask.component.scss']
 })
 export class AddtaskComponent implements OnInit {
-  visible = true;
+  visible = true;     
   selectable = true;
 importance="";
   addOnBlur = true;
