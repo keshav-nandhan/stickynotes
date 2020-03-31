@@ -9,12 +9,13 @@
 <div class="card text-white mb-3" [ngClass]="{
   'bg-success':obj.importance === 'low',
   'bg-warning':obj.importance === 'medium',
-  'bg-danger':obj.importance === 'high'}" style="max-width: 18rem;">
-  <div class="card-header">{{obj.title}}</div>
-  <div class="card-body">
-    <h5 class="card-title">{{obj.description}}</h5>
-    <p class="card-title">{{obj.duedate.toDate() | date:'dd/MM/yyyy'}}</p>
-    <button mat-button (click)="deleteItem(obj)">DELETE</button>
+  'bg-danger':obj.importance === 'high'}" >
+  <div class="card-header cardTitle">{{obj.title}}
+    <div class='pull-right'><button mat-button (click)="deleteItem(obj)">X</button></div>
+  </div>
+  <div class="card-body bodyCustom">
+    <p class="card-title">{{obj.description}}</p>
+    <p class="dateDisplay">{{obj.duedate.toDate() | date:'dd/MM/yyyy'}}</p>
   </div>
 </div>
 </div>

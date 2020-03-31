@@ -1,3 +1,4 @@
+<h1>Sticky Notes</h1>
 <div>
   <h3>Add Task to Notes</h3>
 </div>
@@ -30,11 +31,8 @@
     </div>
         <!-- Date picker -->
         
-      <div class="form-group">
-    <input matInput readonly [matDatepicker]="picker" formControlName="duedate" class="form-control" (dateChange)="date($event)">
-    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-    <mat-datepicker #picker></mat-datepicker>
-      </div>
+        
+        <input  type="date" name="dateofbirth" id="dateofbirth" value="" (dateChange)="date($event)">
         
         <!-- Submit -->
         <div class="button-wrapper">
