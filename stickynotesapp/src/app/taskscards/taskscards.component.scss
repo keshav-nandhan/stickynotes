@@ -1,7 +1,14 @@
+.header {
+    font-family: fantasy;
+}
 .logoutLblPos{
     position:fixed;
     right:10px;
     top:5px;
+ }
+
+ .customBorder {
+     border-right: 1px solid slategrey;
  }
 
 .card:hover{
@@ -15,12 +22,16 @@
             float:left;
             text-align:left;
         }
-
+        .customWidth{
+            width:100%;
+        }
         .card{
-            max-width: 18rem;
+            width:100%;
+            align-items: center;
             padding: 10 px;
         }
         .card-header {
+            width:100%;
             padding: .25rem 1rem;
         }
         .titleCustom{
@@ -35,6 +46,7 @@
         font-family: sans-serif;
     }
     .bodyCustom{
+        width:100%;
         min-height: 150px;
         position: relative;
     }
