@@ -34,7 +34,7 @@
 
           <div class="form-group">
             <label for="FormControlInput3">Choose an option</label>
-            <select [(value)]="importance" id="FormControlInput3" class="form-control" formControlName="importance">
+            <select [(value)]="importance" id="FormControlInput3"  formControlName="importance">
               <option disabled selected>Select any option</option>
               <option value="low">Low</option>
               <option value="medium">Medium</option>
@@ -42,10 +42,10 @@
             </select>
           </div>
           <!-- Date picker -->
-
+          <div class="form-group">
           <label for="FormControlInput3">Select Date</label>
-          <input type="date" name="dateofbirth" id="dateofbirth" value="" (dateChange)="date($event)">
-
+          <input type="date" name="dateofbirth"  class="form-control" id="dateofbirth" value="" (dateChange)="date($event)">
+        </div>
           <!-- Submit -->
           <div class="button-wrapper pt-3">
             <button mat-raised-button color="primary" class="button" type="submit">Add Task</button>
@@ -57,10 +57,10 @@
     <div class="col-md-8">
 
 
-      <button class='.d-block .d-md-none' routerLink="/addtask" routerLinkActive="active" type="button" class="btn btn-default">
+      <button routerLink="/addtask" routerLinkActive="active" type="button" class="btn btn-default d-block d-sm-block d-md-none">
         <span class="glyphicon glyphicon-plus-sign" aria-hidden="true">Add Task</span>
       </button>
-      <div class="row mt-5 card-container  col-md-6" *ngIf="(taskitems | async)?.length;else warning">
+      <div class="row mt-5 card-container  col-md-5" *ngIf="(taskitems | async)?.length;else warning">
         <div class=" mb-3 customWidth" *ngFor="let obj of taskitems | async">
           <div class="card text-white mb-3" [ngClass]="{
               'bg-success':obj.importance === 'low',
