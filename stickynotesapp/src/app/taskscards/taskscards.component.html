@@ -2,7 +2,7 @@
   <h1>Sticky Notes</h1>
   <button class="btn btn-danger logoutLblPos" (click)="signOut()">Logout</button>
 </div>
-<div class="container">
+<div class="container mt-5">
   <div class="row">
     <div class="col-md-4 customBorder">
 
@@ -34,7 +34,7 @@
 
           <div class="form-group">
             <label for="FormControlInput3">Choose an option</label>
-            <select [(value)]="importance" id="FormControlInput3"  formControlName="importance">
+            <select [(value)]="importance" id="FormControlInput3" class='form-control'  formControlName="importance">
               <option disabled selected>Select any option</option>
               <option value="low">Low</option>
               <option value="medium">Medium</option>
@@ -60,8 +60,8 @@
       <button routerLink="/addtask" routerLinkActive="active" type="button" class="btn btn-default d-block d-sm-block d-md-none">
         <span class="glyphicon glyphicon-plus-sign" aria-hidden="true">Add Task</span>
       </button>
-      <div class="row mt-5 card-container  col-md-5" *ngIf="(taskitems | async)?.length;else warning">
-        <div class=" mb-3 customWidth" *ngFor="let obj of taskitems | async">
+      <div class="row mt-5 card-container  col-12" *ngIf="(taskitems | async)?.length;else warning">
+        <div class=" mb-3 customWidth col-md-5" *ngFor="let obj of taskitems | async">
           <div class="card text-white mb-3" [ngClass]="{
               'bg-success':obj.importance === 'low',
               'bg-warning':obj.importance === 'medium',
